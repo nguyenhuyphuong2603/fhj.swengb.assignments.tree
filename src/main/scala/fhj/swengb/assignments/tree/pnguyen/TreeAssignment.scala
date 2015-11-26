@@ -1,6 +1,8 @@
-package fhj.swengb.assignments.tree.rladstaetter
+package fhj.swengb.assignments.tree.pnguyen
 
 import javafx.scene.paint.Color
+
+import fhj.swengb.assignments.tree.TreeApp
 
 import scala.math.BigDecimal.RoundingMode
 import scala.util.Random
@@ -39,9 +41,31 @@ object Graph {
     * @param convert a converter function
     * @return
     */
-  def traverse[A, B](tree: Tree[A])(convert: A => B): Seq[B] = {
-  ???
+
+  def traverse[A, B](tree: Tree[A])(convert: A => B): Seq[B] = tree match {
+    case Branch(left: Int) => traverse(left)(convert)
+    case Branch(right: Int) => traverse(right)(convert)
+    case Node(value: Int) => Seq((convert) (value)) //Seq((value).convert)          //Seq [(convert)(value)]
+
   }
+
+  //
+  // case Some() => traverse(left)
+
+
+  //tree match {
+
+  //case class Branch(left: Int, right: Int )
+
+  //case Branch ()
+
+//}
+
+
+
+
+
+
 
   /**
     * Creates a tree graph.
@@ -63,9 +87,9 @@ object Graph {
               factor: Double = 0.75,
               angle: Double = 45.0,
               colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
-    assert(treeDepth <= colorMap.size, s"Treedepth higher than color mappings - bailing out ...")
-    ???
- }
+    assert(treeDepth <= colorMap.size, s"Tree depth higher than color mappings - bailing out ...")
+    //case start =
+ ???
 
 }
 
@@ -78,7 +102,7 @@ object MathUtil {
     * @return
     */
   def round(value: Double): Double = {
-    ???
+    BigDecimal(value).setScale(3, BigDecimal.RoundingMode.HALF_UP).toDouble //------------------------
   }
 
   /**
@@ -88,7 +112,7 @@ object MathUtil {
     * @return
     */
   def toRadiants(angle: AngleInDegrees): AngleInRadiants = {
-   ???
+   java.lang.Math.toRadians(angle) //-------------------------------------------------
   }
 }
 
@@ -108,7 +132,13 @@ object L2D {
     * @return
     */
   def apply(start: Pt2D, angle: AngleInDegrees, length: Double, color: Color): L2D = {
-    ???
+
+    //
+    val endx : Double = length + start.x
+    val endy: Double = length + start.y
+    val end = Pt2D(endx, endy)
+
+    new L2D(start, end , color ) //----------------------------?????????????????
   }
 
 
