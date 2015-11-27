@@ -87,7 +87,7 @@ object Graph {
               factor: Double = 0.75,
               angle: Double = 45.0,
               colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
-    assert(treeDepth <= colorMap.size, s"Tree depth higher than color mappings - bailing out ...")
+    assert(treeDepth <= colorMap.size, s"Tree depth higher than color mappings - bailing out ...") //.
     //case start =
     //....
  ???
